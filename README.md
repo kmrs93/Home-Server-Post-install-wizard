@@ -1,88 +1,99 @@
-# 🧙 Post-Install Wizard for Ubuntu
+# 🏠 Home Server Post-Install Wizard
 
-An interactive Bash-based setup wizard designed to streamline post-installation tasks on Ubuntu systems. Whether you're configuring a fresh server or customizing a desktop environment, this tool helps automate essential setup steps with a user-friendly interface powered by `whiptail`.
-
----
-
-## 🚀 Features
-
-* ✅ Dependency auto-check and installation  
-* 📦 Expand LVM root volume  
-* 💤 Disable lid sleep behavior  
-* 🌐 Configure Wi-Fi with static IP using Netplan  
-* 💾 Mount multiple HDDs with UUID and filesystem support  
-* 📁 Set up Samba shares with user access control  
-* 🐳 Install Docker and add current user to Docker group  
-* 🧩 Task checklist or full sequential execution  
-* 🛡️ Config file backups before modification  
+A collection of Bash scripts to automate and simplify post-installation tasks on Ubuntu-based home servers. Whether you're setting up storage, networking, or services like Samba and Docker, this toolkit helps you get it done fast—with or without a GUI.
 
 ---
 
-## 📋 Requirements
+## 📦 Quick Install
 
-This script is intended for Ubuntu-based systems and requires `sudo` privileges.
+Clone this repository using `curl` and `git`:
 
-Dependencies (auto-installed if missing):
+```bash
+curl -L https://github.com/kmrs93/Home-Server-Post-install-wizard/archive/refs/heads/main.tar.gz | tar -xz && mv Home-Server-Post-install-wizard-main Home-Server-Post-install-wizard
+```
 
-* `whiptail`  
-* `lsblk`  
-* `ip`  
-* `awk`  
-* `curl`  
-* `netplan`  
-* `NetworkManager`  
-* `smbpasswd`  
+Or use `git` directly:
 
----
-
-## 🧑‍💻 Usage
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/yourusername/post-install-wizard.git
-   cd post-install-wizard
-   ```
-
-2. Make the script executable:
-
-   ```bash
-   chmod +x post_install_wizard.sh
-   ```
-
-3. Run the wizard:
-
-   ```bash
-   sudo ./post_install_wizard.sh
-   ```
+```bash
+git clone https://github.com/kmrs93/Home-Server-Post-install-wizard.git
+```
 
 ---
 
-## 🛠️ Customization
+## 📁 Contents
 
-You can modify or extend the script by adding new setup functions or adjusting existing ones. Each task is modular and easy to adapt.
-
-To add a new task:
-
-* Define a new function  
-* Add it to the checklist in `task_checklist()`  
-* Optionally include it in the sequential run block  
+| Script | Description | 
+| --- | --- | 
+| `post_install.sh` | Runs all setup tasks sequentially with minimal prompts | 
+| `wizard_install.sh` | Interactive wizard with checklists and progress bars | 
 
 ---
 
-## ⚠️ Notes
+## 🛠️ Features
 
-* Some changes (e.g., Docker group membership) may require logging out and back in.  
-* Always review and test changes in a safe environment before deploying to production systems.  
-
----
-
-## 📄 License
-
-This project is open-source under the MIT License.
+* 📈 Expand LVM root volume  
+* 🔧 Disable sleep on lid close  
+* 📶 Configure Wi-Fi with static IP (Netplan)  
+* 📁 Mount HDDs interactively  
+* 🔐 Install and configure Samba shares  
+* 🐳 Install Docker and add user to Docker group  
 
 ---
 
-## 🙌 Credits
+## 🚀 Usage
 
-Crafted with care to simplify Ubuntu setup workflows. Contributions and suggestions welcome!
+### 🔧 Prerequisites
+
+* Ubuntu system with LVM  
+* Sudo privileges  
+* Internet connection  
+* Optional: `whiptail` (for wizard interface)  
+
+### ▶️ Run the Scripts
+
+#### Option 1: Automatic Setup
+
+```bash
+chmod +x post_install.sh
+./post_install.sh
+```
+
+#### Option 2: Interactive Wizard
+
+```bash
+chmod +x wizard_install.sh
+./wizard_install.sh
+```
+
+You'll be guided through a checklist of tasks with progress bars and input dialogs.
+
+---
+
+## 📦 Dependencies
+
+The wizard script will auto-install missing dependencies:
+
+* `whiptail`, `lsblk`, `ip`, `awk`, `curl`, `netplan`, `NetworkManager`, `smbpasswd`
+
+---
+
+## 📂 Repository Structure
+
+```
+Home-Server-Post-install-wizard/
+├── post_install.sh       # Sequential automation script
+├── wizard_install.sh     # Interactive setup wizard
+└── README.md             # Documentation
+```
+
+---
+
+## 📜 License
+
+MIT License — free to use, modify, and distribute.
+
+---
+
+## 👤 Author
+
+[@kmrs93](https://github.com/kmrs93)
